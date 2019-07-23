@@ -14,7 +14,17 @@ class Player
         @life_points = @life_points - damages
 
         if @life_points <= 0
-            p "RIP In Peace #{name} !"
+"
+                                                                                 -|-
+                                                                                  |
+                                                                              .-'~~~`-.
+                                                                            .'         `.
+                                                                            |  R  I  P  |
+                                                                            |   #{name}    |
+                                                                            |           |
+                                                                            |           |
+                                                                        ^^^^^^^^^^^^^^^^^^^^^^
+ "
         end
     end
 
