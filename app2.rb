@@ -59,17 +59,19 @@ puts "                                                                2 - Rose a
 print "                                                                > "
 key = gets.chomp
 
-    while key != ["a","s",1,2]
+    while key == ["a","s",1,2]
         if key == "a"
-            search_weapon
+            HumanPlayer.search_weapon
         elsif key == "s"
-            search_health_pack
+            HumanPlayer.search_health_pack
         elsif key == 1
-            user.attacks(player1)
-            "Vous avez attaqué José"
+            HumanPlayer.attacks(player1)
+            puts "Vous avez attaqué #{player2.name}"
         elsif key == 2
-            user.attacks(player2)
+            HumanPlayer.attacks(player2)
+            puts "Vous avez attaqué #{player2.name}"
         else
+            "a,s,1 ou 2 !!!"
         end
     end
 end
