@@ -38,3 +38,55 @@ class Player
         attacked_player.gets_damage(damage)
     end
 end
+
+class HumanPlayer < Player
+    attr_accessor :name, :weapon_level
+
+    def initialize(name)
+        @weapon_level = 1
+        super(name)
+        @life_points = 100
+    end
+
+    def show_state
+        "#{@name} a #{@life_points} et une arme de niveau #{@weapon_level}"
+    end
+
+    def compute_damage
+        rand(1..6) * @weapon_level
+    end
+
+    def search_weapon
+        weapon_lvl = rand(1..6)
+        "Tu as trouvé une arme de niveau #{weapon_lvl} !"
+        if @weapon_level < weapon_lvl
+            @weapon_level = weapon_lvl
+            "Youhou elle est meilleure que ton arme actuelle ! [tu la prend]"
+        else
+            "M@#*$... elle n'est pas mieux que ton arme actuelle ! [tu lui crache dessus]"
+        end
+    end
+    
+    def search_health_pack
+        dé = rand(1..6)
+        if dé == 1
+            "Tu n'as rien trouvé..."
+        elsif dé == [2..5]
+            "Bravo tu as trouvé un pack de +50 de vie !"
+            @life_points = @life_points + 50
+            if @life_points > 100
+                @life_points = 100
+            else
+                @life_points = @life_points
+            end
+        else
+            "Waow ! tu as trouvé un pack de +80 de vie !"
+            @life_points = @life_points + 80
+            if @life_points > 100
+                @life_points = 100
+            else
+                @life_points = @life_points
+            end
+        end
+    end
+end
