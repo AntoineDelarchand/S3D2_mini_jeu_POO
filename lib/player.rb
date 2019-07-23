@@ -14,7 +14,7 @@ class Player
         @life_points = @life_points - damages
 
         if @life_points <= 0
-"
+puts "
                                                                                  -|-
                                                                                   |
                                                                               .-'~~~`-.
@@ -34,7 +34,7 @@ class Player
 
     def attacks(attacked_player)
         damage = compute_damage
-        puts "#{@name} attaque #{attacked_player.name} ! Il inflige #{damage} dégats !"
+        puts "                                                              #{@name} attaque #{attacked_player.name} ! Il inflige #{damage} dégats !"
         attacked_player.gets_damage(damage)
     end
 end
@@ -58,21 +58,21 @@ class HumanPlayer < Player
 
     def search_weapon
         weapon_lvl = rand(1..6)
-        "Tu as trouvé une arme de niveau #{weapon_lvl} !"
+        puts "                                                              Tu as trouvé une arme de niveau #{weapon_lvl} !"
         if @weapon_level < weapon_lvl
             @weapon_level = weapon_lvl
-            "Youhou elle est meilleure que ton arme actuelle ! [tu la prend]"
+            puts "                                                              Youhou elle est meilleure que ton arme actuelle ! [tu la prend]"
         else
-            "M@#*$... elle n'est pas mieux que ton arme actuelle ! [tu lui crache dessus]"
+            puts "                                                              M@#*$... elle n'est pas mieux que ton arme actuelle ! [tu lui crache dessus]"
         end
     end
     
     def search_health_pack
         dé = rand(1..6)
         if dé == 1
-            "Tu n'as rien trouvé..."
-        elsif dé == [2..5]
-            "Bravo tu as trouvé un pack de +50 de vie !"
+            puts "                                                              Tu n'as rien trouvé..."
+        elsif dé >= 2 && dé <= 5
+            puts "                                                              Bravo tu as trouvé un pack de +50 de vie !"
             @life_points = @life_points + 50
             if @life_points > 100
                 @life_points = 100
@@ -80,7 +80,7 @@ class HumanPlayer < Player
                 @life_points = @life_points
             end
         else
-            "Waow ! tu as trouvé un pack de +80 de vie !"
+            puts "                                                              Waow ! tu as trouvé un pack de +80 de vie !"
             @life_points = @life_points + 80
             if @life_points > 100
                 @life_points = 100
